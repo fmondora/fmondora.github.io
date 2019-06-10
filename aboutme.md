@@ -1,16 +1,7 @@
 ---
 layout: page
 title: About me
-subtitle: Why you'd want to go on a date with me
+subtitle: Break the rules when rules are broken
 ---
 
-My name is Inigo Montoya. I have the following qualities:
-
-- I rock a great mustache
-- I'm extremely loyal to my family
-
-What else do you need?
-
-### my history
-
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](http://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+I'm one of the founders of <a href="https://mondora.com">mondora srl sb</>, with over 20 years experience in the IT world. He is a visionary and an optimist, and enjoys working on Artificial Intelligence, Blockchain and Robotics. As well as being the CEO of Benefit Corporation mondora, I'm also a passionate teacher, specialised in Executive Coaching and an expert of Corporate Agile Management and Business Strategy. I am a disruptive thinker who loves collaborating with people and businesses in building and adapting self organised companies and focusing on the happiness of employees. I can often be found speaking about these topics at conferences and events throughout Europe.
