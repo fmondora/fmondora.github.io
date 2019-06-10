@@ -2,7 +2,7 @@
 layout: post
 title:  "Leaders for Peace - Rondine della Pace - Arezzo"
 date:   2019-06-07 10:15:49 +0200
-tags: [interdipendenza, italian]
+tags: [interdipendenza, italian, brokenrules]
 comments: true
 ---
 
