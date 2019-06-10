@@ -5,7 +5,7 @@
 
 # If you are building a simple GitHub user page (https://username.github.io) then use these settings:
 url: "https://francesco.mondora.com"
-baseurl: ""
+baseurl: "/"
 
 # If you are building a GitHub project page then use these settings:
 #url: "http://username.github.io/projectname"
@@ -64,7 +64,7 @@ footer-link-col: "#404040"
 # Change all these values or delete the ones you don't want.
 # Important: you must keep the "name" parameter, everything else you can remove
 author:
-  name: Some Person
+  name:Francesco Mondora
 
 # Select your active Social Network Links.
 # Uncomment the links you want to show in the footer and add your information to each link.
