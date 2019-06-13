@@ -2,42 +2,47 @@
 layout: post
 title:  "Leaders for Peace - Rondine della Pace - Arezzo"
 date:   2019-06-07 10:15:49 +0200
-tags: [interdipendenza, italian, brokenrules]
+tags: [interdependence, brokenrules]
 comments: true
 ---
 
-## Synopsis
-All'incontro **Leaders for peace** a Rondine della Pace, ho parlato di come si possa parlare di interdipendenza per il pianeta.
 
-![La presentazione](/assets/interdependence-agreements.png)
+At the Leaders for Peace meeting at **Rondine della Pace**, I spoke about how to discuss  (interdependence for  the planet.)
 
-### Rompere le regole che sono rotte
-Questo è il mantra di queto mio periodo: "devo rompere le regole che sono rotte". La situazione attuale è condizionata dalle regole attuali, alcune delle quali forse valevano, ma oggi non valgono più. Sono regole che devono essere cambiate e la loro natura le idenfitica come rotte. E' proprio la natura di un organismo che vive il saper identificare quali sono le regole che non funzionano più e cambiarle, piuttosto che continuare a subirle.
-L'elenco delle regole rotte:
-- [ ] Qualcuno vuole fare il furbo durante un acquisto siccome *viviamo tutti nello stesso mondo*;
-- [ ] Lo sconto non esiste *perché c'è solo una differenza di valore per le parti*
+![The presentation](/assets/interdependence-agreements.png)
 
 
-### La relazione con l'ufficio acquisti
-Ad ogni persona che si occupa di vendita, succede poi di andare a negoziare il prezzo del proprio servizio o prodotto con l'ufficio acquisti. L'Ufficio Acquisti ha la responsabilità di armonizzare gli acquisti e di capire il "vero valore" di una fornitura. Ci sono due percezioni diverse nel momento in cui si valuta una fornitura:
-- quello del fornitore;
-- quello dell'acquirente.
-La prima regola rotte che sottolineo è che *"qualcuno dei due vuole fare il furbo"*. E' necessario rompere questa regola e iniziare a pensare che tutti e due NON fanno i furbi e la loro valorizzazione della fornitura è vista dalla loro angolazione. Quindi non c'è da chiedere uno sconto per l'ufficio acquisti e non c'è da fare una maggiorazione ante ufficio acquisti per chi vende.
-Quindi c'è una differenza sulla quale entrambe le parti si possono conentrare e dove possono cercare il **vero valore** della fornitura.
+### Breaking rules that are broken.
+Lately this has been my mantra: "I must break the rules that are broken". The current situation is determined by current rules, some of which maybe were once  valid, but no longer are today. These are rules that need to be changed and their very nature identifies them as broken. It's in the very nature of a living organism  to be able to recognize which are the rules that no longer work and change them, instead of continuing to tolerate them.
+
+The list of broken rules:
+- Someone wants to be cunning during a purchase seen as we all know and live in the same world;
+- There is no discount because there is only a difference in value for the parties involved.
+
+### The relationship with the procurement office.
+Every person who works in sales ends up negotiating the price of their service or product with the procurement office. The procurement office is responsible for harmonizing purchases and understanding the "true value" of a supply. There are two different points of view when valuing a supply:
+- that of the supplier
+- that of the buyer
 
 
-### Il vero valore
-Perché le due parti lavorano assieme? Quale è il vero motivo? Ce lo dice la differenza di percezione. Cosa sarebbe se entrambe le parti puntassero **come in una scommessa** la differenza di valore come qualcosa di impatto per la società o il mondo/pianeta. Cosa sarebbe se il soggetto debole (chi ha la valorizzazione inferiore) misurasse il raggiungimento della scommessa? Come sarebbe se entrambi dicessero:
+ The first broken rule that I wish to point out is that "one or the other is being cunning". It is necessary to break this rule and start believing that NEITHER   is in fact trying to be cunning and that the value they give to the supply is seen from their respective points of view.
 
->Con questa fornitura voglio costruire un mondo nel mio piccolo parco utenti più **felice**.
-
-Il soggetto debole vorrebbe misurare la felicità, mentre il soggetto forte vorrebbe "dimostrare" la felicità. E' come se l'idea della semplice fornitura diventi un pretesto per rendere il piccolo parco di utenti più felice. E' come se oltre all'EBITDA del fornitore, anche in numeri legati a quante persone sono più felici sia importante. Magari in un *rapporto di sostenibilità* per i propri soci o i propri portatori di interesse. Oggi è possibile trovare dei meccanismi in cui il vero valore possa emergere. Ci sono diversi frameworks che aiutano. Per esempio gli SDG, l'ESG oppure l'assessment del BLAB possono essere elementi in cui si può trarre spunto di vero valore.
-
-### Alcuni esempi
-- NoMorePrinting: ho spinto diversi clienti a sensibilizzare i propri utenti che le stampe provocano il taglio di alberi. Misuriamo gli alberi che non sono stati tagliati;
-- HappyCorp: ho spinto dei fornitori a prendersi cura della felicità dei propri colleghi a fronte di un aumento di compenso
-- Cycle2Work.io: fai pedalare i tuoi utenti per andare al lavoro
+ So there is an actual difference in which both parties can concentrate and where they can search for the true value of the supply.
 
 
-## License
-Copyleft
+### The true value.
+Why do both parties work together? What is the real reason? Their different perceptions tell us this. How would it be if both parties bet on the difference in value as if it were something that can have an impact on society and the world/planet?
+How would it be if the weaker party (the one who has the lower valuation) were the one to measure up to the bet? How would it be if both said:
+
+> With this supply I wish to build a small world in my (piccolo parco utenti) that is happier
+
+The weaker subject wants to measure happiness while the stronger subject wants to "demonstrate" happiness. It's as if the idea of a simple supply becomes a pretext for making the parties happier.
+
+Therefore the supplier shouldn't charge the price before a procurement negotiation, and the procurement should negotiate for some good reasons like "the piece in the World."
+
+Today it is possible to find mechanisms in which the true value may emerge. There are different frameworks that can help. For example SDG, ESG or the assessment of BLAB can be elements from which it is possible to find true value.
+
+### Some examples
+-NoMorePrinting: I have encouraged several clients to make their users aware of the fact that prints cause trees to be cut down. Let's consider the trees that have not been cut down;
+-HappyCorp: I have pushed some suppliers, through increased reward, to take care of their colleagues' happiness.
+-Cycle2Work: make your users pedal to the workplace.
