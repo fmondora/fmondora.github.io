@@ -6,7 +6,7 @@ tags:
   - wholeness
   - abundance
 comments: true
-published: false
+published: true
 ---
 
 It has been an amazing conference within the athmosphere of Paris.
