@@ -1,10 +1,17 @@
 ---
 layout: post
-title:  "Bees and purpose"
-date:   2019-01-01 01:00:00 +0200
-tags: [bees, findingpurpose, purpose, drawingsexplained]
+title: Bees and purpose
+date: '2019-01-01 01:00:00 +0200'
+tags:
+  - bees
+  - findingpurpose
+  - purpose
+  - drawingsexplained
 comments: true
-excerpt: I'm inspired by nature and I look all the different ways the nature is in her purpose.
+excerpt: >-
+  I'm inspired by nature and I look all the different ways the nature is in her
+  purpose.
+published: true
 ---
 # Bees
 
@@ -22,3 +29,4 @@ The new companies also take and create benefit and wellbeing
 No, bees don’t steal
 Bees only create benefit, making profit
 Let’s try to be inspired by nature
+
