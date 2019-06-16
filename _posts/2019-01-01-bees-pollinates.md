@@ -29,4 +29,3 @@ The new companies also take and create benefit and wellbeing
 No, bees don’t steal
 Bees only create benefit, making profit
 Let’s try to be inspired by nature
-
