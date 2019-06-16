@@ -17,7 +17,7 @@ published: true
 
 ![The presentation](/assets/bees.png)
 
-Bees steal
+> Bees steal
 Yes, bees steal
 Yes, bees steal honey
 Just like most of the companies who do business
@@ -29,4 +29,3 @@ The new companies also take and create benefit and wellbeing
 No, bees don’t steal
 Bees only create benefit, making profit
 Let’s try to be inspired by nature
-
