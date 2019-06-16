@@ -4,6 +4,8 @@ title: Story mondora
 subtitle: The story of mondora.
 ---
 
+![mondora logo](/assets/mondora.png)
+
 by Alessandra Scala
 
 
