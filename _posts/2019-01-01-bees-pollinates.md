@@ -14,10 +14,9 @@ excerpt: >-
 published: true
 ---
 # Bees  
-  
-![The presentation](/assets/bees.png)
-  
-Bees steal  
+
+
+![Bees](/assets/bees.png){: .image-left .fifty}Bees steal  
 Yes, bees steal  
 Yes, bees steal honey  
 Just like most of the companies who do business  

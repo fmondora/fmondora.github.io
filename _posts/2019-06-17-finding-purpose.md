@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Bees"
+title:  "Finding purpose"
 date:   2019-05-25 14:30:00 +0200
 tags: [realyou, finding, purpose, apple, trees, drawingsexplained]
 comments: true
