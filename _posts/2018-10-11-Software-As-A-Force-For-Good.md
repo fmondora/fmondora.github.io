@@ -22,6 +22,7 @@ published: true
 
 Francesco Mondora, Unconventional CEO at Mondora, spoke about how software can be thought of as a force for good at [Goto Berlin 2018](https://gotober.com/2018/). InfoQ is covering this conference with Q&A, summaries, and articles.
 
+![Berlin 2018](/assets/Berlin-2018.png)
 An organisation should have a higher principle, argued Mondora. The shareholders should consider the bigger purpose, not just think about making money, he said.
 
 Considering the fact that people are equally adults within a company and are managed by the company purpose, there is no need to structure the company, said Mondora. What is needed is transparency, openness and complete trust.
