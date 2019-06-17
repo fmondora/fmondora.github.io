@@ -69,4 +69,4 @@ Teal organisations value their culture, as Ash Sheikh explained in [Robot Says "
 
 I see teal as analogous to culture. Culture (as with teal) is not an end state in itself. It is something to be cultivated, something which will grow and evolve and must be cared for and nurtured; it is a living organism which will be constantly adapting and changing so needs to be cared for constantly. Your culture does not have to be the same as Google’s, Facebook’s or anyone else’s culture. Your culture is unique to your organization.
 
-Other examples of self-organised organisations based on teal and agile principles are [SoftwareMill]https://www.infoq.com/articles/decisions-company-no-managers) and [InfoQ](https://www.infoq.com/articles/decisions-company-no-managers/).
+Other examples of self-organised organisations based on teal and agile principles are [SoftwareMill](https://www.infoq.com/articles/decisions-company-no-managers) and [InfoQ](https://www.infoq.com/articles/decisions-company-no-managers/).
