@@ -7,6 +7,8 @@ tags:
   - abundance
 comments: true
 excerpt: I see organizations as a platform where people can both develop or destroy themselves. But before talking about practices, I want to focus on who is really getting through the door (physically or virtually) of the organization.
+meta-description: I see organizations as a platform where people can both develop or destroy themselves. But before talking about practices, I want to focus on who is really getting through the door (physically or virtually) of the organization.
+share-img: /assets/lamour-paris.png
 published: true
 ---
 

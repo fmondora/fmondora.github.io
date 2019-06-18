@@ -8,8 +8,10 @@ tags:
   - purpose
   - drawingsexplained
 comments: true
-excerpt: >-
-  I'm inspired by nature and I look all the different ways the nature is in her
+excerpt: I'm inspired by nature and I look all the different ways the nature is in her purpose.
+
+share-img: /assets/bees.png
+meta-description:   I'm inspired by nature and I look all the different ways the nature is in her
   purpose.
 published: true
 ---

@@ -3,6 +3,14 @@ layout: post
 title:  "Leaders for Peace - Rondine della Pace - Arezzo"
 date:   2019-06-07 10:15:49 +0200
 tags: [interdependence, brokenrules]
+
+excerpt: Lately this has been my mantra
+
+share-img: /assets/interdependence-agreements.png
+
+
+meta-description: ababbdabdfjsdlkfad flkasdjfla sdjlsfa sjdlkajsdflkasdj flaskdjf aslk jaslksajdflasdjflaksjd falkfja adsflkdjf l
+
 comments: true
 ---
 

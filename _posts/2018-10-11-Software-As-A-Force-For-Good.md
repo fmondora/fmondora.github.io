@@ -9,6 +9,8 @@ tags:
   - mondora
 comments: true
 excerpt: A teal organisation set its horizon by defining its higher purpose and describing why it exists.  Individuals join the company because of the value it creates for the world, and work freely towards a specific purpose. A teal and agile company has a culture of complete openness, transparency and mutual trust; everyone should feel safe and encouraged to share ideas, and make mistakes, without fear.
+meta-description: A teal organisation set its horizon by defining its higher purpose and describing why it exists.  Individuals join the company because of the value it creates for the world, and work freely towards a specific purpose. A teal and agile company has a culture of complete openness, transparency and mutual trust; everyone should feel safe and encouraged to share ideas, and make mistakes, without fear.
+share-img: /assets/Berlin-2018.png
 
 published: true
 ---
