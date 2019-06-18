@@ -14,3 +14,7 @@
   width: 30%;
   padding-bottom: 400px;
 }
+
+.formFooter.f6 {
+    display: none;
+}
