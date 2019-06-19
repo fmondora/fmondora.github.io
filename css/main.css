@@ -136,6 +136,7 @@ img {
 }
 
 .navbar-custom .navbar-brand-logo {
+ max-width: 270px;
   padding-top: 0;
   -webkit-transition: padding .5s ease-in-out;
   -moz-transition: padding .5s ease-in-out;
