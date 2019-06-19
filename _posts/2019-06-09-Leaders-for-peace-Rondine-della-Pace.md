@@ -8,8 +8,12 @@ excerpt: Lately this has been my mantra
 
 share-img: /assets/interdependence-agreements.png
 
+comments: true
+excerpt: The current situation is determined by current rules, some of which maybe were once  valid, but no longer are today. These are rules that need to be changed and their very nature identifies them as broken. It's in the very nature of a living organism  to be able to recognize which are the rules that no longer work and change them, instead of continuing to tolerate them.
 
-meta-description: ababbdabdfjsdlkfad flkasdjfla sdjlsfa sjdlkajsdflkasdj flaskdjf aslk jaslksajdflasdjflaksjd falkfja adsflkdjf l
+meta-description: The current situation is determined by current rules, some of which maybe were once  valid, but no longer are today. These are rules that need to be changed and their very nature identifies them as broken. It's in the very nature of a living organism  to be able to recognize which are the rules that no longer work and change them, instead of continuing to tolerate them.
+image: /assets/sum/rondine.png
+show-avatar: true
 
 comments: true
 ---
