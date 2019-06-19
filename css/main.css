@@ -7,8 +7,8 @@ layout: null
 /* --- General --- */
 
 body {
-  font-family: 'Lora', 'Times New Roman', serif;
-  font-size: 18px;
+  font-family: 'Libre Baskerville', 'Times New Roman', serif;
+  font-size: 14px;
   color: #404040;
   position: relative;
   background-color: {{ site.page-col }};
@@ -22,8 +22,9 @@ p {
   margin: 30px 0;
 }
 h1,h2,h3,h4,h5,h6 {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 800;
+  font-family: 'Open Sans regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  font-weight: 400;
 }
 a {
   color: {{ site.link-col }};
@@ -107,8 +108,8 @@ img {
 
 .navbar-custom {
   background-color: {{ site.navbar-col }};
-  border-bottom: 1px solid #EAEAEA;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  border-bottom: 1px solid #E0E0E0;
+  font-family: 'Open Sans Medium', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   {% if site.navbar-img %}
   background-image: url({{ site.navbar-img | relative_url }});
   background-attachment: fixed;
@@ -346,7 +347,7 @@ footer .theme-by {
 .post-preview .post-meta,
 .post-heading .post-meta {
   color: #808080;
-  font-size: 18px;
+  font-size: 11px;
   font-style: italic;
   margin: 0 0 10px;
 }
@@ -470,7 +471,7 @@ footer .theme-by {
 }
 .intro-header .page-heading h1 {
   margin-top: 0;
-  font-size: 50px;
+  font-size: 30px;
 }
 .intro-header .post-heading h1 {
   margin-top: 0;
@@ -526,7 +527,7 @@ footer .theme-by {
     font-size: 80px;
   }
   .intro-header .post-heading h1 {
-    font-size: 50px;
+    font-size: 40px;
   }
   .intro-header.big-img .img-desc {
     font-size: 14px;
