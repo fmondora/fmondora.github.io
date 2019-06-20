@@ -50,7 +50,7 @@ How would it be if the weaker party (the one who has the lower valuation) were t
 
 The weaker subject wants to measure happiness while the stronger subject wants to "demonstrate" happiness. It's as if the idea of a simple supply becomes a pretext for making the parties happier.
 
-Therefore the supplier shouldn't charge the price before a procurement negotiation, and the procurement should negotiate for some good reasons like "the piece in the World."
+Therefore the supplier shouldn't charge the price before a procurement negotiation, and the procurement should negotiate for some good reasons like "the peace in the World."
 
 Today it is possible to find mechanisms in which the true value may emerge. There are different frameworks that can help. For example SDG, ESG or the assessment of BLAB can be elements from which it is possible to find true value.
 
