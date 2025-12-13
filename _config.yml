@@ -28,6 +28,7 @@ description: I love to break the broken rules!
 # List of links in the navigation bar
 navbar-links:
   Hire me!: "hireme"
+  Imposter: "imposter"
 
   Half Life:
     - mondora.com: "storymondora"
