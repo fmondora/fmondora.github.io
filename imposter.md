@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Gioco dell'Impostore
-permalink: /
+permalink: /imposter/
 ---
 
 <div class="container">
