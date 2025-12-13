@@ -23,12 +23,9 @@ title: Gioco dell'Impostore
             <select id="numImpostori" aria-label="Numero di impostori" disabled>
                 <option value="1">1</option>
             </select>
-            <label for="tempoMin">Tempo Discussione (min, 1-30):</label>
-            <input type="number" id="tempoMin" min="1" max="30" value="5" aria-label="Durata discussione in minuti">
         </div>
         <div class="nomi-container" id="nomiContainer"></div>
         <button id="iniziaGioco" disabled aria-label="Inizia il gioco">Inizia Gioco</button>
-        <div id="loadingParole" style="display: none; color: #ff4444;">Caricamento parole...</div>
     </div>
 
     <!-- Schermo Assegnazione Ruoli -->
@@ -40,23 +37,21 @@ title: Gioco dell'Impostore
         </div>
     </div>
     <div id="overlay" class="overlay">
-        <p id="turnoOverlay" style="margin-bottom: 1rem; font-size: 1.2rem;"></p>
         <button id="scopriRuolo" style="padding: 2rem; font-size: 1.5rem;" aria-label="Scopri il tuo ruolo">Scopri il Tuo Ruolo</button>
     </div>
 
     <!-- Schermo Gioco Principale -->
     <div id="game" class="screen">
         <h2>Discussione in Corso</h2>
-        <div class="parola-segreta" id="parolaDisplay" role="status" style="visibility: hidden;">La parola segreta era: <span id="parolaSpan"></span></div>
+        <div class="parola-segreta" id="parolaDisplay" role="status">La parola segreta è: <span id="parolaSpan"></span></div>
         <div class="timer" id="timerDisplay"></div>
-        <button id="mostraImpostori" aria-label="Mostra gli impostori">Mostra Impostori (Fine Discussione)</button>
+        <button id="mostraImpostori" disabled aria-label="Mostra gli impostori">Mostra Impostori (Fine Discussione)</button>
     </div>
 
     <!-- Schermo Fine Gioco -->
     <div id="end" class="screen">
         <h2 class="vittoria" id="vittoriaText"></h2>
         <p id="impostoriList"></p>
-        <div class="parola-segreta" id="parolaEndDisplay" role="status">La parola segreta era: <span id="parolaSpanEnd"></span></div>
         <button id="nuovaPartita" aria-label="Inizia una nuova partita">Nuova Partita</button>
     </div>
 
@@ -204,7 +199,7 @@ title: Gioco dell'Impostore
     /* Responsive */
     @media (min-width: 600px) {
         .config-grid {
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: 1fr 1fr;
         }
         .nomi-container {
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -249,44 +244,22 @@ title: Gioco dell'Impostore
         numGiocatori: 3,
         numImpostori: 1,
         nomiGiocatori: [],
-        parolaSegreta: null, // Ora oggetto {categoria, parola}
+        parolaSegreta: '',
         ruoli: [],
         currentPlayerIndex: 0,
-        tempoMin: 5,
         timer: null,
-        timerInterval: null,
-        paroleData: [] // Array di oggetti {categoria, parola}
+        timerInterval: null
     };
 
-    // Nomi default predefiniti
-    const nomiPredefiniti = ['Anna', 'Vicki', 'Lucia', 'Francesco', 'Mattia', 'Gabriele'];
-
-    // Funzione per caricare parole da JSON
-    async function caricaParole() {
-        try {
-            const response = await fetch('/parole.json');
-            if (!response.ok) {
-                throw new Error('File non trovato');
-            }
-            const data = await response.json();
-            gameState.paroleData = data; // Mantieni oggetti interi {categoria, parola}
-            console.log('Parole caricate:', gameState.paroleData); // Debug
-            document.getElementById('loadingParole').style.display = 'none';
-        } catch (error) {
-            console.error('Errore caricamento parole:', error);
-            showToast('Errore nel caricamento delle parole. Usa parole di default.');
-            // Fallback a array di oggetti
-            gameState.paroleData = [
-                {categoria: 'Oggetti', parola: 'casa'}, {categoria: 'Animali', parola: 'cane'}, {categoria: 'Natura', parola: 'albero'}, {categoria: 'Natura', parola: 'fiore'}, {categoria: 'Oggetti', parola: 'libro'}, {categoria: 'Natura', parola: 'acqua'}, {categoria: 'Natura', parola: 'sole'}, {categoria: 'Natura', parola: 'luna'}, {categoria: 'Natura', parola: 'stella'}, {categoria: 'Natura', parola: 'fiume'},
-                {categoria: 'Natura', parola: 'montagna'}, {categoria: 'Natura', parola: 'mare'}, {categoria: 'Natura', parola: 'cielo'}, {categoria: 'Natura', parola: 'terra'}, {categoria: 'Elementi', parola: 'fuoco'}, {categoria: 'Natura', parola: 'vento'}, {categoria: 'Natura', parola: 'pioggia'}, {categoria: 'Natura', parola: 'neve'}, {categoria: 'Natura', parola: 'ghiaccio'}, {categoria: 'Natura', parola: 'sabbia'},
-                {categoria: 'Natura', parola: 'pietra'}, {categoria: 'Materiali', parola: 'legno'}, {categoria: 'Materiali', parola: 'metallo'}, {categoria: 'Materiali', parola: 'vetro'}, {categoria: 'Materiali', parola: 'carta'}, {categoria: 'Oggetti', parola: 'penna'}, {categoria: 'Oggetti', parola: 'tavolo'}, {categoria: 'Oggetti', parola: 'sedia'}, {categoria: 'Oggetti', parola: 'porta'}, {categoria: 'Oggetti', parola: 'finestra'},
-                {categoria: 'Oggetti', parola: 'letto'}, {categoria: 'Oggetti', parola: 'lampada'}, {categoria: 'Oggetti', parola: 'orologio'}, {categoria: 'Oggetti', parola: 'telefono'}, {categoria: 'Oggetti', parola: 'computer'}, {categoria: 'Veicoli', parola: 'auto'}, {categoria: 'Veicoli', parola: 'treno'}, {categoria: 'Veicoli', parola: 'aereo'}, {categoria: 'Veicoli', parola: 'barca'}, {categoria: 'Veicoli', parola: 'bici'},
-                {categoria: 'Giochi', parola: 'palla'}, {categoria: 'Abbigliamento', parola: 'scarpa'}, {categoria: 'Abbigliamento', parola: 'cappello'}, {categoria: 'Abbigliamento', parola: 'guanto'}, {categoria: 'Abbigliamento', parola: 'sciarpa'}, {categoria: 'Abbigliamento', parola: 'giacca'}, {categoria: 'Abbigliamento', parola: 'pantaloni'}, {categoria: 'Abbigliamento', parola: 'maglia'}, {categoria: 'Abbigliamento', parola: 'scarpe'}, {categoria: 'Accessori', parola: 'borsa'},
-                {categoria: 'Oggetti', parola: 'chiave'}, {categoria: 'Denaro', parola: 'moneta'}, {categoria: 'Viaggi', parola: 'biglietto'}, {categoria: 'Ricordi', parola: 'foto'}, {categoria: 'Viaggi', parola: 'mappa'}, {categoria: 'Cucina', parola: 'cucchiaio'}, {categoria: 'Cucina', parola: 'forchetta'}, {categoria: 'Cucina', parola: 'coltello'}, {categoria: 'Cucina', parola: 'piatto'}
-            ];
-            document.getElementById('loadingParole').style.display = 'none';
-        }
-    }
+    // Array di parole segrete (almeno 50 parole semplici in italiano)
+    const parole = [
+        'casa', 'cane', 'albero', 'fiore', 'libro', 'acqua', 'sole', 'luna', 'stella', 'fiume',
+        'montagna', 'mare', 'cielo', 'terra', 'fuoco', 'vento', 'pioggia', 'neve', 'ghiaccio', 'sabbia',
+        'pietra', 'legno', 'metallo', 'vetro', 'carta', 'penna', 'tavolo', 'sedia', 'porta', 'finestra',
+        'letto', 'lampada', 'orologio', 'telefono', 'computer', 'auto', 'treno', 'aereo', 'barca', 'bici',
+        'palla', 'scarpa', 'cappello', 'guanto', 'sciarpa', 'giacca', 'pantaloni', 'maglia', 'scarpe', 'borsa',
+        'chiave', 'moneta', 'biglietto', 'foto', 'mappa', 'busso', 'cucchiaio', 'forchetta', 'coltello', 'piatto'
+    ];
 
     // Funzione per mostrare toast
     function showToast(message, duration = 3000) {
@@ -296,14 +269,9 @@ title: Gioco dell'Impostore
         setTimeout(() => toast.classList.remove('active'), duration);
     }
 
-    // Funzione per generare nomi default con predefiniti
+    // Funzione per generare nomi default
     function generaNomiDefault(num) {
-        const nomi = nomiPredefiniti.slice(0, num);
-        const rimanenti = num - nomiPredefiniti.length;
-        if (rimanenti > 0) {
-            nomi.push(...Array.from({length: rimanenti}, (_, i) => `Giocatore ${i + 7}`));
-        }
-        return nomi;
+        return Array.from({length: num}, (_, i) => `Giocatore ${i + 1}`);
     }
 
     // Funzione per aggiornare dropdown impostori
@@ -348,6 +316,7 @@ title: Gioco dell'Impostore
 
     // Funzione per rimuovere nome (ma mantieni numG fisso, solo edit)
     function rimuoviNome(index) {
+        // Non rimuovere, solo clear - per semplicità, disabilita rimozione
         showToast('Non è possibile rimuovere giocatori durante la config.');
     }
 
@@ -355,9 +324,8 @@ title: Gioco dell'Impostore
     function checkConfigValid() {
         const numG = parseInt(document.getElementById('numGiocatori').value);
         const numI = parseInt(document.getElementById('numImpostori').value);
-        const tempoM = parseInt(document.getElementById('tempoMin').value);
         const btn = document.getElementById('iniziaGioco');
-        const valid = numG >= 3 && numI >= 1 && numI <= numG / 2 && gameState.nomiGiocatori.every(n => n.trim()) && tempoM >= 1 && tempoM <= 30 && gameState.paroleData.length > 0;
+        const valid = numG >= 3 && numI >= 1 && numI <= numG / 2 && gameState.nomiGiocatori.every(n => n.trim());
         btn.disabled = !valid;
     }
 
@@ -368,21 +336,18 @@ title: Gioco dell'Impostore
             popolaNomi();
             checkConfigValid();
         });
-        document.getElementById('numImpostori').addEventListener('change', checkConfigValid);
-        document.getElementById('tempoMin').addEventListener('input', checkConfigValid);
-        document.getElementById('iniziaGioco').addEventListener('click', startAssignRoles);
         updateImpostoriDropdown();
         popolaNomi();
         checkConfigValid();
+
+        document.getElementById('numImpostori').addEventListener('change', checkConfigValid);
+        document.getElementById('iniziaGioco').addEventListener('click', startAssignRoles);
     }
 
-    // Genera parola segreta (ora oggetto {categoria, parola})
+    // Genera parola segreta
     function generaParola() {
-        if (gameState.paroleData.length === 0) {
-            throw new Error('Parole non caricate');
-        }
-        const idx = Math.floor(Math.random() * gameState.paroleData.length);
-        return gameState.paroleData[idx];
+        const idx = Math.floor(Math.random() * parole.length);
+        return parole[idx];
     }
 
     // Shuffle Fisher-Yates
@@ -409,13 +374,12 @@ title: Gioco dell'Impostore
     async function startAssignRoles() {
         gameState.numGiocatori = parseInt(document.getElementById('numGiocatori').value);
         gameState.numImpostori = parseInt(document.getElementById('numImpostori').value);
-        gameState.tempoMin = parseInt(document.getElementById('tempoMin').value);
         gameState.nomiGiocatori = Array.from(document.querySelectorAll('.nome-input input'), input => input.value.trim() || generaNomiDefault(1)[0]);
         gameState.parolaSegreta = generaParola();
         assegnaRuoli();
         gameState.currentPlayerIndex = 0;
 
-        // Salva in localStorage per reload (serializza oggetto)
+        // Salva in localStorage per reload
         localStorage.setItem('gameState', JSON.stringify(gameState));
 
         switchScreen('assign');
@@ -426,12 +390,8 @@ title: Gioco dell'Impostore
     async function assignRolesSequentially() {
         for (let i = 0; i < gameState.numGiocatori; i++) {
             gameState.currentPlayerIndex = i;
-            const nome = gameState.nomiGiocatori[i];
-            document.getElementById('turnoInfo').textContent = `Turno di ${nome} / ${gameState.numGiocatori}`;
+            document.getElementById('turnoInfo').textContent = `Turno di ${gameState.nomiGiocatori[i]} / ${gameState.numGiocatori}`;
             document.getElementById('turnoInfo').setAttribute('aria-live', 'polite');
-
-            // Mostra nome anche nell'overlay per chiarezza
-            document.getElementById('turnoOverlay').textContent = `Turno di ${nome}`;
 
             // Mostra overlay
             document.getElementById('overlay').classList.add('active');
@@ -447,11 +407,12 @@ title: Gioco dell'Impostore
             ruoloInfo.style.display = 'block';
             ruoloInfo.classList.add('fade-in');
             const ruolo = gameState.ruoli[i];
+            const nome = gameState.nomiGiocatori[i];
             if (ruolo === 'Cittadino') {
-                ruoloText.innerHTML = `<span class="ruolo-cit">Sei un Cittadino, ${nome}!</span><br>La parola è: <strong>${gameState.parolaSegreta.parola}</strong><br><small>Categoria: ${gameState.parolaSegreta.categoria}</small>`;
+                ruoloText.innerHTML = `<span class="ruolo-cit">Sei un Cittadino, ${nome}!</span><br>La parola è: <strong>${gameState.parolaSegreta}</strong>`;
                 ruoloText.setAttribute('aria-live', 'polite');
             } else {
-                ruoloText.innerHTML = `<span class="ruolo-imp">Sei un Impostore, ${nome}!</span><br>La categoria è: <strong>${gameState.parolaSegreta.categoria}</strong><br>Indovina la parola...`;
+                ruoloText.innerHTML = `<span class="ruolo-imp">Sei un Impostore, ${nome}!</span><br>Indovina la parola...`;
                 ruoloText.setAttribute('aria-live', 'polite');
             }
             document.getElementById('confermaRuolo').focus();
@@ -487,12 +448,12 @@ title: Gioco dell'Impostore
     // Avvia gioco principale
     function startGame() {
         switchScreen('game');
-        // Non mostrare parola durante discussione
-        document.getElementById('parolaDisplay').style.visibility = 'hidden';
+        document.getElementById('parolaSpan').textContent = gameState.parolaSegreta; // Visibile per host/cittadini
+        document.getElementById('mostraImpostori').disabled = false;
         document.getElementById('mostraImpostori').addEventListener('click', revealImpostors);
 
-        // Timer configurabile
-        let tempo = gameState.tempoMin * 60; // sec
+        // Timer opzionale 5 min
+        let tempo = 300; // 5 min in sec
         const timerDisplay = document.getElementById('timerDisplay');
         gameState.timerInterval = setInterval(() => {
             const min = Math.floor(tempo / 60);
@@ -510,16 +471,11 @@ title: Gioco dell'Impostore
     function revealImpostors() {
         clearInterval(gameState.timerInterval);
         const impostoriNomi = gameState.ruoli.map((ruolo, i) => ruolo === 'Impostore' ? gameState.nomiGiocatori[i] : null).filter(Boolean);
-        // Semplifica: Vittoria impostori se >0, ma adatta se vuoi logica (es. input per guess)
+        // Semplifica: Vittoria basata su... per ora, rivela e reset. Regola: Impostori vincono se indovinano, ma offline, quindi solo rivela.
         const vittoriaText = document.getElementById('vittoriaText');
         vittoriaText.textContent = impostoriNomi.length > 0 ? 'Vittoria Impostori!' : 'Vittoria Cittadini!'; // Semplificato
         vittoriaText.className = `vittoria ${impostoriNomi.length > 0 ? 'imp' : 'cit'}`;
         document.getElementById('impostoriList').textContent = `I veri impostori sono: ${impostoriNomi.join(', ')}`;
-        
-        // Mostra parola alla fine
-        document.getElementById('parolaSpanEnd').textContent = `${gameState.parolaSegreta.parola} (Categoria: ${gameState.parolaSegreta.categoria})`;
-        document.getElementById('parolaEndDisplay').style.visibility = 'visible';
-        
         switchScreen('end');
         document.getElementById('nuovaPartita').addEventListener('click', resetGame);
     }
@@ -530,20 +486,15 @@ title: Gioco dell'Impostore
             numGiocatori: 3,
             numImpostori: 1,
             nomiGiocatori: [],
-            parolaSegreta: null,
+            parolaSegreta: '',
             ruoli: [],
             currentPlayerIndex: 0,
-            tempoMin: 5,
             timer: null,
-            timerInterval: null,
-            paroleData: []
+            timerInterval: null
         });
         localStorage.removeItem('gameState');
         switchScreen('config');
         initConfig();
-        // Ricarica parole al reset
-        document.getElementById('loadingParole').style.display = 'block';
-        caricaParole();
     }
 
     // Switch screen
@@ -552,37 +503,22 @@ title: Gioco dell'Impostore
         document.getElementById(id).classList.add('active');
     }
 
-    // Event listeners globali per overlay (ma gestiti in async)
-    document.addEventListener('DOMContentLoaded', () => {
-        // Per evitare errori, aggiungi listener se elementi esistono
-        const scopriBtn = document.getElementById('scopriRuolo');
-        const confermaBtn = document.getElementById('confermaRuolo');
-        if (scopriBtn) {
-            scopriBtn.addEventListener('click', () => {
-                document.getElementById('overlay').classList.remove('active');
-            });
-        }
-        if (confermaBtn) {
-            confermaBtn.addEventListener('click', () => {
-                document.getElementById('ruoloInfo').style.display = 'none';
-            });
-        }
+    // Event listeners globali
+    document.getElementById('scopriRuolo').addEventListener('click', () => {
+        document.getElementById('overlay').classList.remove('active');
+        // Trigger reveal nel loop
+    });
+    document.getElementById('confermaRuolo').addEventListener('click', () => {
+        document.getElementById('ruoloInfo').style.display = 'none';
+        // Trigger next nel loop
     });
 
-    // Init async
-    async function init() {
-        document.getElementById('loadingParole').style.display = 'block';
-        await caricaParole(); // Carica parole all'avvio
-
+    // Init
+    function init() {
         // Carica da localStorage se presente
         const saved = localStorage.getItem('gameState');
         if (saved) {
-            const parsed = JSON.parse(saved);
-            // Ricostruisci oggetto parola da stringa se necessario
-            if (parsed.parolaSegreta && typeof parsed.parolaSegreta === 'string') {
-                parsed.parolaSegreta = JSON.parse(parsed.parolaSegreta);
-            }
-            Object.assign(gameState, parsed);
+            Object.assign(gameState, JSON.parse(saved));
             // Resume se in mezzo
             if (gameState.currentPlayerIndex < gameState.numGiocatori && gameState.ruoli.length > 0) {
                 switchScreen('assign');
@@ -607,6 +543,7 @@ title: Gioco dell'Impostore
             setTimeout(() => oscillator.stop(), 200);
         }
     }
+    // Aggiungi a buttons se vuoi: addEventListener('click', playBeep);
 
     // Avvia app
     init();
