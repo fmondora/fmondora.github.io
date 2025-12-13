@@ -40,6 +40,7 @@ title: Gioco dell'Impostore
         </div>
     </div>
     <div id="overlay" class="overlay">
+        <p id="turnoOverlay" style="margin-bottom: 1rem; font-size: 1.2rem;"></p>
         <button id="scopriRuolo" style="padding: 2rem; font-size: 1.5rem;" aria-label="Scopri il tuo ruolo">Scopri il Tuo Ruolo</button>
     </div>
 
@@ -248,13 +249,13 @@ title: Gioco dell'Impostore
         numGiocatori: 3,
         numImpostori: 1,
         nomiGiocatori: [],
-        parolaSegreta: '',
+        parolaSegreta: null, // Ora oggetto {categoria, parola}
         ruoli: [],
         currentPlayerIndex: 0,
         tempoMin: 5,
         timer: null,
         timerInterval: null,
-        paroleData: [] // Array caricato dal JSON
+        paroleData: [] // Array di oggetti {categoria, parola}
     };
 
     // Nomi default predefiniti
@@ -268,20 +269,20 @@ title: Gioco dell'Impostore
                 throw new Error('File non trovato');
             }
             const data = await response.json();
-            gameState.paroleData = data.map(item => item.parola); // Estrai solo le parole, ignora categoria per ora
+            gameState.paroleData = data; // Mantieni oggetti interi {categoria, parola}
             console.log('Parole caricate:', gameState.paroleData); // Debug
             document.getElementById('loadingParole').style.display = 'none';
         } catch (error) {
             console.error('Errore caricamento parole:', error);
             showToast('Errore nel caricamento delle parole. Usa parole di default.');
-            // Fallback a array fisso se fallisce
+            // Fallback a array di oggetti
             gameState.paroleData = [
-                'casa', 'cane', 'albero', 'fiore', 'libro', 'acqua', 'sole', 'luna', 'stella', 'fiume',
-                'montagna', 'mare', 'cielo', 'terra', 'fuoco', 'vento', 'pioggia', 'neve', 'ghiaccio', 'sabbia',
-                'pietra', 'legno', 'metallo', 'vetro', 'carta', 'penna', 'tavolo', 'sedia', 'porta', 'finestra',
-                'letto', 'lampada', 'orologio', 'telefono', 'computer', 'auto', 'treno', 'aereo', 'barca', 'bici',
-                'palla', 'scarpa', 'cappello', 'guanto', 'sciarpa', 'giacca', 'pantaloni', 'maglia', 'scarpe', 'borsa',
-                'chiave', 'moneta', 'biglietto', 'foto', 'mappa', 'busso', 'cucchiaio', 'forchetta', 'coltello', 'piatto'
+                {categoria: 'Oggetti', parola: 'casa'}, {categoria: 'Animali', parola: 'cane'}, {categoria: 'Natura', parola: 'albero'}, {categoria: 'Natura', parola: 'fiore'}, {categoria: 'Oggetti', parola: 'libro'}, {categoria: 'Natura', parola: 'acqua'}, {categoria: 'Natura', parola: 'sole'}, {categoria: 'Natura', parola: 'luna'}, {categoria: 'Natura', parola: 'stella'}, {categoria: 'Natura', parola: 'fiume'},
+                {categoria: 'Natura', parola: 'montagna'}, {categoria: 'Natura', parola: 'mare'}, {categoria: 'Natura', parola: 'cielo'}, {categoria: 'Natura', parola: 'terra'}, {categoria: 'Elementi', parola: 'fuoco'}, {categoria: 'Natura', parola: 'vento'}, {categoria: 'Natura', parola: 'pioggia'}, {categoria: 'Natura', parola: 'neve'}, {categoria: 'Natura', parola: 'ghiaccio'}, {categoria: 'Natura', parola: 'sabbia'},
+                {categoria: 'Natura', parola: 'pietra'}, {categoria: 'Materiali', parola: 'legno'}, {categoria: 'Materiali', parola: 'metallo'}, {categoria: 'Materiali', parola: 'vetro'}, {categoria: 'Materiali', parola: 'carta'}, {categoria: 'Oggetti', parola: 'penna'}, {categoria: 'Oggetti', parola: 'tavolo'}, {categoria: 'Oggetti', parola: 'sedia'}, {categoria: 'Oggetti', parola: 'porta'}, {categoria: 'Oggetti', parola: 'finestra'},
+                {categoria: 'Oggetti', parola: 'letto'}, {categoria: 'Oggetti', parola: 'lampada'}, {categoria: 'Oggetti', parola: 'orologio'}, {categoria: 'Oggetti', parola: 'telefono'}, {categoria: 'Oggetti', parola: 'computer'}, {categoria: 'Veicoli', parola: 'auto'}, {categoria: 'Veicoli', parola: 'treno'}, {categoria: 'Veicoli', parola: 'aereo'}, {categoria: 'Veicoli', parola: 'barca'}, {categoria: 'Veicoli', parola: 'bici'},
+                {categoria: 'Giochi', parola: 'palla'}, {categoria: 'Abbigliamento', parola: 'scarpa'}, {categoria: 'Abbigliamento', parola: 'cappello'}, {categoria: 'Abbigliamento', parola: 'guanto'}, {categoria: 'Abbigliamento', parola: 'sciarpa'}, {categoria: 'Abbigliamento', parola: 'giacca'}, {categoria: 'Abbigliamento', parola: 'pantaloni'}, {categoria: 'Abbigliamento', parola: 'maglia'}, {categoria: 'Abbigliamento', parola: 'scarpe'}, {categoria: 'Accessori', parola: 'borsa'},
+                {categoria: 'Oggetti', parola: 'chiave'}, {categoria: 'Denaro', parola: 'moneta'}, {categoria: 'Viaggi', parola: 'biglietto'}, {categoria: 'Ricordi', parola: 'foto'}, {categoria: 'Viaggi', parola: 'mappa'}, {categoria: 'Cucina', parola: 'cucchiaio'}, {categoria: 'Cucina', parola: 'forchetta'}, {categoria: 'Cucina', parola: 'coltello'}, {categoria: 'Cucina', parola: 'piatto'}
             ];
             document.getElementById('loadingParole').style.display = 'none';
         }
@@ -375,7 +376,7 @@ title: Gioco dell'Impostore
         checkConfigValid();
     }
 
-    // Genera parola segreta (ora usa parole caricate)
+    // Genera parola segreta (ora oggetto {categoria, parola})
     function generaParola() {
         if (gameState.paroleData.length === 0) {
             throw new Error('Parole non caricate');
@@ -414,7 +415,7 @@ title: Gioco dell'Impostore
         assegnaRuoli();
         gameState.currentPlayerIndex = 0;
 
-        // Salva in localStorage per reload
+        // Salva in localStorage per reload (serializza oggetto)
         localStorage.setItem('gameState', JSON.stringify(gameState));
 
         switchScreen('assign');
@@ -425,8 +426,12 @@ title: Gioco dell'Impostore
     async function assignRolesSequentially() {
         for (let i = 0; i < gameState.numGiocatori; i++) {
             gameState.currentPlayerIndex = i;
-            document.getElementById('turnoInfo').textContent = `Turno di ${gameState.nomiGiocatori[i]} / ${gameState.numGiocatori}`;
+            const nome = gameState.nomiGiocatori[i];
+            document.getElementById('turnoInfo').textContent = `Turno di ${nome} / ${gameState.numGiocatori}`;
             document.getElementById('turnoInfo').setAttribute('aria-live', 'polite');
+
+            // Mostra nome anche nell'overlay per chiarezza
+            document.getElementById('turnoOverlay').textContent = `Turno di ${nome}`;
 
             // Mostra overlay
             document.getElementById('overlay').classList.add('active');
@@ -442,12 +447,11 @@ title: Gioco dell'Impostore
             ruoloInfo.style.display = 'block';
             ruoloInfo.classList.add('fade-in');
             const ruolo = gameState.ruoli[i];
-            const nome = gameState.nomiGiocatori[i];
             if (ruolo === 'Cittadino') {
-                ruoloText.innerHTML = `<span class="ruolo-cit">Sei un Cittadino, ${nome}!</span><br>La parola è: <strong>${gameState.parolaSegreta}</strong>`;
+                ruoloText.innerHTML = `<span class="ruolo-cit">Sei un Cittadino, ${nome}!</span><br>La parola è: <strong>${gameState.parolaSegreta.parola}</strong><br><small>Categoria: ${gameState.parolaSegreta.categoria}</small>`;
                 ruoloText.setAttribute('aria-live', 'polite');
             } else {
-                ruoloText.innerHTML = `<span class="ruolo-imp">Sei un Impostore, ${nome}!</span><br>Indovina la parola...`;
+                ruoloText.innerHTML = `<span class="ruolo-imp">Sei un Impostore, ${nome}!</span><br>La categoria è: <strong>${gameState.parolaSegreta.categoria}</strong><br>Indovina la parola...`;
                 ruoloText.setAttribute('aria-live', 'polite');
             }
             document.getElementById('confermaRuolo').focus();
@@ -513,7 +517,7 @@ title: Gioco dell'Impostore
         document.getElementById('impostoriList').textContent = `I veri impostori sono: ${impostoriNomi.join(', ')}`;
         
         // Mostra parola alla fine
-        document.getElementById('parolaSpanEnd').textContent = gameState.parolaSegreta;
+        document.getElementById('parolaSpanEnd').textContent = `${gameState.parolaSegreta.parola} (Categoria: ${gameState.parolaSegreta.categoria})`;
         document.getElementById('parolaEndDisplay').style.visibility = 'visible';
         
         switchScreen('end');
@@ -526,7 +530,7 @@ title: Gioco dell'Impostore
             numGiocatori: 3,
             numImpostori: 1,
             nomiGiocatori: [],
-            parolaSegreta: '',
+            parolaSegreta: null,
             ruoli: [],
             currentPlayerIndex: 0,
             tempoMin: 5,
@@ -573,7 +577,12 @@ title: Gioco dell'Impostore
         // Carica da localStorage se presente
         const saved = localStorage.getItem('gameState');
         if (saved) {
-            Object.assign(gameState, JSON.parse(saved));
+            const parsed = JSON.parse(saved);
+            // Ricostruisci oggetto parola da stringa se necessario
+            if (parsed.parolaSegreta && typeof parsed.parolaSegreta === 'string') {
+                parsed.parolaSegreta = JSON.parse(parsed.parolaSegreta);
+            }
+            Object.assign(gameState, parsed);
             // Resume se in mezzo
             if (gameState.currentPlayerIndex < gameState.numGiocatori && gameState.ruoli.length > 0) {
                 switchScreen('assign');
